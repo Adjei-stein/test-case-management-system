@@ -1,0 +1,209 @@
+<div class="bg-slate-100 w-full h-screen">
+    <div class="main-side-nav flex-none overflow-x-hidden whitespace-nowrap transition-all duration-[195ms] ease-[cubic-bezier(0.4,0,0.6,1)]">
+        <div class="fixed top-0 left-0 h-screen w-100 border-none bg-white shadow-none p-0 rounded-none box-border overflow-y-auto overflow-x-hidden whitespace-nowrap w-[7%] hover:w-[200px] transition-all duration-[195ms] ease-[cubic-bezier(0.4,0,0.6,1)] flex flex-col z-[1200] group">
+            <div class="sticky top-0 z-[1200] flex items-center justify-center bg-white h-[12%] px-0 text-[#030229] font-nunito text-base font-normal whitespace-nowrap max-h-[12%]">
+                <a href="/base" tabindex="0" class="flex items-center space-x-4 no-underline">
+                  <img src="/images/teststein-high-resolution-logo-transparent.png" alt="logo" class="h-8 w-auto"/>
+                  <!-- <h4 class="text-base font-normal">Base</h4> -->
+                </a>
+            </div>
+            <nav class="max-h-[88%] py-4 px-2 box-border overflow-y-auto overflow-x-hidden whitespace-nowrap w-full transition-all duration-[195ms] ease-[cubic-bezier(0.4,0,0.6,1)] flex flex-col">
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>dashboard</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Dashboard</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>edit_note</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Test Cases</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>auto_mode</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Test Runs</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>description</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Reports</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>timeline</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Analytics</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>settings</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Settings</h1>
+                    </a>
+                </li>
+                <li class="list-none group-hover:pl-8 flex h-12 p-2 items-center justify-center group-hover:justify-start hover:bg-slate-100 hover:cursor-pointer hover:shadow-lg mb-2 rounded-lg">
+                    <a class="no-underline flex items-center justify-center group-hover:justify-start">
+                        <mat-icon>help</mat-icon>
+                        <h1 class="ml-2 hidden group-hover:inline-block">Help</h1>
+                    </a>
+                </li>
+            </nav>
+        </div>
+    </div>
+    <main class="bg-slate-100 flex-1 h-screen overflow-y-auto pl-[7%]">
+        <div class="h-[12%] max-h-[12%] h-full flex items-center justify-center">
+            <div class="grid grid-cols-2 gap-4 w-full">
+                <div class="pl-16 w-full">
+                    <div class="w-[50%] bg-white flex items-center justify-center border-none rounded-md focus:ring-none focus:outline-none" tabindex="0">
+                        <input
+                            id="search-box"
+                            type="text"
+                            placeholder="Search"
+                            class="px-1 py-2 border-none bg-white text-gray-800 focus:outline-none focus:ring-none"
+                        />
+                        <div class="flex items-center h-full px-2">
+                            <!-- Material UI Search Icon -->
+                            <mat-icon class="text-gray-600">search</mat-icon>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex items-center justify-end px-10">
+                    <!-- <mat-icon class="text-3xl mr-4" style="height: 2.5rem!important; width: 2.5rem!important;">notifications</mat-icon> -->
+                    <h1 class="text-xl mr-3">Hello, Paul</h1>
+                    <div class="bg-black rounded-3xl h-12 w-12" (click)="toggleDropdown()"></div>
+                    <!-- Dropdown Menu -->
+                    <div
+                        *ngIf="dropdownOpen"
+                        class="absolute top-[70px] right-6 bg-white shadow-lg rounded-md w-64 mt-2"
+                        >
+                        <div class="flex items-center justify-center px-2 py-4">
+                            <div class="w-[35%] px-2">
+                                <div class="bg-black rounded-full h-16 w-16"></div>
+                            </div>
+                            <div class="w-[65%]">
+                                <h1 class="text-base font-medium">Paul Tidings Steiner</h1>
+                                <h3 class="text-sm font-light">adjeisteiner&#64;gmail.com</h3>
+                            </div>
+                        </div>
+                        <ul class="list-none p-2 m-0">
+                            <li class="flex items-center py-2 px-4 cursor-pointer hover:bg-slate-100 rounded-md">
+                                <mat-icon class="text-gray-600 w-5 h-5 mr-2">person</mat-icon>
+                                <span class="text-sm text-gray-800">View Profile</span>
+                            </li>
+                            <li class="flex items-center py-2 px-4 cursor-pointer hover:bg-slate-100 rounded-md">
+                                <mat-icon class="text-gray-600 w-5 h-5 mr-2">notifications</mat-icon>
+                                <span class="text-sm text-gray-800">Notifications</span>
+                            </li>
+                            <li class="flex items-center py-2 px-4 cursor-pointer hover:bg-slate-100 rounded-md">
+                                <mat-icon class="text-gray-600 w-5 h-5 mr-2">logout</mat-icon>
+                                <span class="text-sm text-gray-800">Logout</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-[88%] grid grid-rows-auto">
+            <div class="grid grid-cols-4 gap-4 w-full p-4 h-32 flex items-center justify-center">
+                <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
+                    <div class="w-[40%]">
+                        <div class="bg-gray-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                            <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">design_services</mat-icon>
+                        </div>
+                    </div>
+                    <div class="w-[60%] pl-2">
+                        <span class="text-base text-gray-800">Total Projects</span>
+                        <h1 class="text-3xl font-bold">57</h1>
+                    </div>
+                </div>
+                <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
+                    <div class="w-[40%]">
+                        <div class="bg-blue-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                            <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">sync</mat-icon>
+                        </div>
+                    </div>
+                    <div class="w-[60%] pl-2">
+                        <span class="text-base text-gray-800">Ongoing Tasks</span>
+                        <h1 class="text-3xl font-bold">10</h1>
+                    </div>
+                </div>
+                <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
+                    <div class="w-[40%]">
+                        <div class="bg-green-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                            <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">done_all</mat-icon>
+                        </div>
+                    </div>
+                    <div class="w-[60%] pl-2">
+                        <span class="text-base text-gray-800">Completed Tasks</span>
+                        <h1 class="text-3xl font-bold">20</h1>
+                    </div>
+                </div>
+                <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
+                    <div class="w-[40%]">
+                        <div class="bg-yellow-100 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                            <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">auto_mode</mat-icon>
+                        </div>
+                    </div>
+                    <div class="w-[60%] pl-2">
+                        <span class="text-base text-gray-800">Pending Tests</span>
+                        <h1 class="text-3xl font-bold">7</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full p-4 h-80">
+                <div class="bg-white h-full rounded-md">
+                    <div class="h-12 w-full flex items-center justify-center">
+                        <div class="w-[90%] px-4 h-full flex items-center">
+                            <h3 class="text-2xl font-semibold">Recent Test Runs</h3>
+                        </div>
+                        <div class="w-[10%] h-full flex items-center justify-center px-2 border-b border-l">
+                            <mat-icon class="text-gray-600 w-5 h-5 mr-2">refresh</mat-icon>
+                        </div>
+                    </div>
+                    <div class="h-auto px-2 py-4 w-full">
+                        <table class="table-auto w-full">
+                            <thead>
+                              <tr class="bg-black text-white text-center">
+                                    <th class="w-[10%]">Status</th>
+                                    <th class="w-[30%]">Name</th>
+                                    <th class="w-[30%]">Project Name</th>
+                                    <th class="w-[20%]">Time Commenced</th>
+                                    <th class="w-[10%]">Failures</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="bg-gray-100">
+                                <td class="text-center"><mat-icon class="text-green-600 w-5 h-5">check_circle</mat-icon></td>
+                                <td>Payment System Integration</td>
+                                <td>ShopInn Mobile App</td>
+                                <td class="text-center">30/09/24, 12:00PM GMT</td>
+                                <td class="text-center">0</td>
+                              </tr>
+                              <tr>
+                                <td class="text-center"><mat-icon class="text-gray-600 w-5 h-5">do_not_disturb_on</mat-icon></td>
+                                <td>User Login</td>
+                                <td>LinkedIn</td>
+                                <td class="text-center">07/01/25, 08:00AM GMT</td>
+                                <td class="text-center">2</td>
+                              </tr>
+                              <tr class="bg-gray-100">
+                                <td class="text-center"><mat-icon class="text-green-600 w-5 h-5">check_circle</mat-icon></td>
+                                <td>Form Validation Error</td>
+                                <td>ShopInn Mobile App</td>
+                                <td class="text-center">07/006/24, 4:00PM GMT</td>
+                                <td class="text-center">4</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 w-full p-4 h-60">
+                <div class="bg-white h-full p-4 rounded-md"></div>
+            </div>
+        </div>
+    </main>
+</div>
