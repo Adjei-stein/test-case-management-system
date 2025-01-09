@@ -1,17 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartModule } from 'highcharts-angular'; 
+import { ScheduleModule, EventSettingsModel, TimelineViewsService } from '@syncfusion/ej2-angular-schedule'
+import { TimePickerModule } from '@syncfusion/ej2-angular-calendars'
+import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule'
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatIconModule, CommonModule, HighchartsChartModule],
+  providers: [DayService, 
+    WeekService, 
+    WorkWeekService, 
+    MonthService,
+    AgendaService,
+    MonthAgendaService,
+    TimelineViewsService],
+  standalone: true,
+  // specifies the template string for the Schedule component
+  template: `<ejs-schedule width='100%' #scheduleObj height='550px' [selectedDate]="selectedDate"
+  [eventSettings]="eventSettings"></ejs-schedule>`,
+  imports: [MatIconModule, CommonModule, HighchartsChartModule, ScheduleModule, TimePickerModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   dropdownOpen = false;
+  public selectedDate: Date = new Date(2018, 1, 15);
+    public data: object [] = [{
+    Id: 1,
+    Subject: 'Explosion of Betelgeuse Star',
+    StartTime: new Date(2018, 1, 15, 9, 30),
+    EndTime: new Date(2018, 1, 15, 11, 0),
+    RecurrenceRule: 'FREQ=DAILY;INTERVAL=1;COUNT=2',
+    IsBlock: true
+}, {
+    Id: 2,
+    Subject: 'Thule Air Crash Report',
+    StartTime: new Date(2018, 1, 14, 12, 0),
+    EndTime: new Date(2018, 1, 14, 14, 0)
+}];
+    public eventSettings: EventSettingsModel = {
+        dataSource: this.data,
+    };
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;

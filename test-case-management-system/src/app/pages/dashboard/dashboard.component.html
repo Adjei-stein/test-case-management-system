@@ -110,7 +110,7 @@
             <div class="grid grid-cols-4 gap-4 w-full p-4 h-32 flex items-center justify-center">
                 <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
                     <div class="w-[40%]">
-                        <div class="bg-gray-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                        <div class="bg-gray-200 rounded-full h-16 w-16 flex items-center justify-center">
                             <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">design_services</mat-icon>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
                     <div class="w-[40%]">
-                        <div class="bg-blue-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                        <div class="bg-blue-200 rounded-full h-16 w-16 flex items-center justify-center">
                             <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">sync</mat-icon>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
                     <div class="w-[40%]">
-                        <div class="bg-green-200 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                        <div class="bg-green-200 rounded-full h-16 w-16 flex items-center justify-center">
                             <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">done_all</mat-icon>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                 </div>
                 <div class="border-none rounded-md bg-white h-24 py-4 px-8 flex items-center justify-center">
                     <div class="w-[40%]">
-                        <div class="bg-yellow-100 rounded-full h-16 w-16 flex items-center justify-center w-full">
+                        <div class="bg-yellow-100 rounded-full h-16 w-16 flex items-center justify-center">
                             <mat-icon class="text-gray-600" style="height: 2.5rem!important; width: 2.5rem!important; display: flex!important; align-items: center!important; justify-content: center!important;">auto_mode</mat-icon>
                         </div>
                     </div>
@@ -209,6 +209,16 @@
                           [options]="chartOptions" 
                         ></highcharts-chart>
                       </div>
+                </div>
+                <div class="bg-white h-full p-4 rounded-md">
+                    <ejs-schedule width='100%' height='550px' [selectedDate]="selectedDate" cssClass='schedule-event-template'  [readonly]='readonly' [eventSettings]="eventSettings">
+                        <ng-template #eventSettingsTemplate let-data>
+                            <div class='template-wrap' [style.background]="data.SecondaryColor">
+                                <div class="subject" [style.background]="data.PrimaryColor">{{data.Subject}}</div>
+                                <div class="time" [style.background]="data.PrimaryColor">Time: {{getTimeString(data.StartTime)}} - {{getTimeString(data.EndTime)}}</div>
+                            </div>
+                        </ng-template>
+                    </ejs-schedule>
                 </div>
             </div>
         </div>
