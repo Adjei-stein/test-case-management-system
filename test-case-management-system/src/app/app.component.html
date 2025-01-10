@@ -1,9 +1,13 @@
 <div class="bg-slate-100 w-full h-screen">
-    <app-sidebar></app-sidebar>
-    <main class="bg-slate-100 flex-1 h-screen overflow-y-auto pl-[7%]">
-        <app-header></app-header>
-        <div class="h-[88%]">
+    <!-- Show the main app layout only if logged in -->
+    <div *ngIf="isUserLoggedIn">
+        <app-sidebar></app-sidebar>
+        <main class="bg-slate-100 flex-1 h-screen overflow-y-auto pl-[7%]">
+          <app-header></app-header>
+          <div class="h-[88%]">
             <router-outlet></router-outlet>
-        </div>
-    </main>
+          </div>
+        </main>
+      </div>
+    <app-login *ngIf="!isUserLoggedIn"></app-login>
 </div>

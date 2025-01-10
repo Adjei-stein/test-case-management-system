@@ -4,14 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "./pages/sidebar/sidebar.component";
 import { HeaderComponent } from "./pages/header/header.component";
+import { LoginComponent } from "./pages/login/login.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatIconModule, CommonModule, SidebarComponent, HeaderComponent],
+  imports: [RouterOutlet, MatIconModule, CommonModule, SidebarComponent, HeaderComponent, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  isUserLoggedIn = false
   title = 'test-case-management-system';
   dropdownOpen = false;
 
