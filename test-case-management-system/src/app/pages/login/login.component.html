@@ -1,15 +1,18 @@
-<div class="w-full h-screen grid grid-cols-2">
-    <div class="w-full flex items-center justify-center bg-white">
+<div class="w-full h-screen flex flex-col lg:flex-row">
+    <div class="w-full hidden lg:flex items-center justify-center bg-white">
         <img src="/images/teststein-high-resolution-logo-transparent-moto.png" alt="logo" class="h-[20rem] w-auto"/>
     </div>
-    <div class="w-full flex items-center justify-center bg-slate-100">
-        <div class="w-[60%] h-[70%] bg-black rounded-md">
-            <div class="flex items-center justify-center flex-col h-[20%]">
-                <h2 class="text-white text-2xl font-semibold top-[-1rem] mt-24">Sign In</h2>
-            </div>
-            <div class="flex items-center justify-center flex-col h-[80%]">
-                <form #myForm="ngForm" class="flex flex-col items-center mb-12" (ngSubmit)="onSubmit(myForm.value)">
-                    <div class="w-56 bg-white flex items-center m-2 justify-center border-none rounded-md focus:ring-none focus:outline-none" tabindex="0">
+    <div class="w-full h-full flex items-center justify-center bg-slate-100">
+        <div class="lg:w-[60%] lg:h-[70%] h-full w-full bg-black lg:rounded-md flex items-center justify-center">
+            <div class="flex items-center justify-center flex-col">
+                <div class="w-full lg:hidden flex items-center justify-center h-48 mb-6">
+                    <img src="/images/output-onlinepngtools.png" alt="logo" class="h-48 w-auto"/>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-white text-2xl font-semibold">Sign In</h2>
+                </div>
+                <form #myForm="ngForm" class="flex flex-col items-center" (ngSubmit)="onSubmit(myForm.value)">
+                    <div class="w-64 lg:w-56 bg-white flex items-center m-2 justify-center border-none rounded-md focus:ring-none focus:outline-none" tabindex="0">
                         <input
                             placeholder="Email Id"
                             type="text"
@@ -21,7 +24,7 @@
                             <mat-icon class="text-gray-600">email</mat-icon>
                         </div>
                     </div>
-                    <div class="w-56 m-2 bg-white flex items-center justify-center border-none rounded-md focus:ring-none focus:outline-none" tabindex="0">
+                    <div class="w-64 lg:w-56 m-2 bg-white flex items-center justify-center border-none rounded-md focus:ring-none focus:outline-none" tabindex="0">
                         <input
                             placeholder="Password"
                             type="password"
