@@ -13,7 +13,7 @@ import { LoginComponent } from "./pages/login/login.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  isUserLoggedIn = false
+  isUserLoggedIn = true
   title = 'test-case-management-system';
   dropdownOpen = false;
 
