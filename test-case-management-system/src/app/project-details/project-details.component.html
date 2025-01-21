@@ -1,14 +1,41 @@
 <div class="m-4 flex items-center justify-center">
     <div class="bg-white w-full h-full border-none rounded-lg shadow-2xl p-8">
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="mb-4">
-                <label for="firstname" class="block text-gray-700 text-sm font-bold mb-2">First name</label>
-                <input type="text" id="firstname" placeholder="First name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <form>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="mb-4">
+                    <label for="firstname" class="block text-gray-700 text-sm font-bold mb-2">First name</label>
+                    <input type="text" id="firstname" placeholder="First name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="lastname" class="block text-gray-700 text-sm font-bold mb-2">Last name</label>
+                    <input type="text" id="lastname" placeholder="Last name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="lastname" class="block text-gray-700 text-sm font-bold mb-2">Last name</label>
-                <input type="text" id="lastname" placeholder="Fst name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-        </div>
+            <mat-label>Stakeholders' Emails</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter Email">
+                @for (email of emails(); track email) {
+                <mat-chip-row
+                    (removed)="remove(email)"
+                    [editable]="true"
+                    (edited)="edit(email, $event)"
+                    [aria-description]="'press enter to edit ' + email.name"
+                >
+                    {{email.name}}
+                    <button matChipRemove [attr.aria-label]="'remove ' + email.name">
+                    <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+                }
+                <input
+                class="p-4 outline-none"
+                placeholder="New email..."
+                [matChipInputFor]="chipGrid"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)"
+                />
+            </mat-chip-grid>
+        </form>
+            
     </div>
 </div>
