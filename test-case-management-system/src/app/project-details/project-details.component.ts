@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject, signal } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, inject, signal, NgModule, AfterViewInit } from '@angular/core';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators, AbstractControl, FormsModule } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms'; // If you're using MDB UI Kit
 import {LiveAnnouncer} from '@angular/cdk/a11y';
@@ -7,7 +7,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips'; // Material Chips Module
 import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import { NgbDatepicker, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 export interface Emails {
   name: string;
@@ -15,15 +20,22 @@ export interface Emails {
 
 @Component({
   selector: 'app-project-details',
-  imports: [MdbFormsModule, ReactiveFormsModule, MatChipsModule, MatIconModule, MatFormFieldModule, MatButtonModule],
+  providers: [provideNativeDateAdapter()],
+  imports: [MdbFormsModule, ReactiveFormsModule, MatChipsModule, MatIconModule, 
+    MatFormFieldModule, MatButtonModule, MatSelectModule, MatNativeDateModule, 
+    MatDatepickerModule, FormsModule, NgbDatepickerModule],
   templateUrl: './project-details.component.html',
-  styleUrl: './project-details.component.scss'
+  styleUrl: './project-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailsComponent {
+  readonly date = new FormControl(new Date());
   readonly addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   readonly emails = signal<Emails[]>([]);
   readonly announcer = inject(LiveAnnouncer);
+  public model2: any;
+
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -70,64 +82,7 @@ export class ProjectDetailsComponent {
     });
   }
 
-    /* public separatorKeysCodes = [ENTER, COMMA];
-    public emailList: { value: any; invalid: boolean }[] = [];
-    removable = true;
-    rulesForm!: FormGroup;
-  
-    constructor(private fb: FormBuilder) {}
-  
-    ngOnInit() {
-      this.rulesForm = this.fb.group({
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        emails: this.fb.array([], [this.validateArrayNotEmpty]),
-      });
-    }
-  
-    // Helper method to get the email FormArray
-    get emails(): FormArray {
-      return this.rulesForm.get('emails') as FormArray;
-    }
-  
-    add(event: any): void {
-      const email = event.value;
-      if (email) {
-        if (this.validateEmail(email)) {
-          this.emails.push(new FormControl(email, [Validators.required, Validators.email]));
-          this.emailList.push({ value: email, invalid: false });
-        } else {
-          this.emailList.push({ value: email, invalid: true });
-          this.rulesForm.controls['emails'].setErrors({ 'incorrectEmail': true });
-        }
-      }
-      if (event.input) {
-        event.input.value = '';  // Clear the input field after adding the email
-      }
-    }
-  
-    removeEmail(data: any): void {
-      const index = this.emailList.indexOf(data);
-      if (index >= 0) {
-        this.emailList.splice(index, 1);
-        this.emails.removeAt(index);  // Remove email from the FormArray as well
-      }
-    }
-  
-    private validateArrayNotEmpty(c: AbstractControl) {
-      if (c.value && c.value.length === 0) {
-        return {
-          validateArrayNotEmpty: { valid: false }
-        };
-      }
-      return null;
-    }
-  
-    private validateEmail(email: string) {
-      const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      return re.test(String(email).toLowerCase());
-    } */
-  
+    
     // Submit handler
     /* onSubmit() {
       if (this.rulesForm.valid) {
@@ -135,3 +90,4 @@ export class ProjectDetailsComponent {
       }
     } */
 }
+
