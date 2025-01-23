@@ -20,7 +20,7 @@
             <div class="flex gap-4 mb-4">
                 <div class="mb-4 mx-2 flex flex-col">
                     <mat-label class='px-4'>Application Type</mat-label>
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="fill" class="custom-form-field">
                         <mat-select>
                             <mat-option value="one">First option</mat-option>
                             <mat-option value="two">Second option</mat-option>
@@ -36,6 +36,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                
                 <!-- <div class="mb-4 mx-2 flex flex-col">
                     <mat-label>Choose a date</mat-label>
                     <div class="col-12">
@@ -61,10 +62,18 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="mb-4 mx-2">
+                    <mat-label class='px-4'>Start Date</mat-label>
+                    <input type="date" id="startdate" placeholder="" class="border w-full py-4 px-4 leading-tight focus:outline-none rounded border-slate-950">
+                </div>
+                <div class="mb-4 mx-2">
+                    <mat-label class='px-4'>End Date</mat-label>
+                    <input type="date" id="enddate" placeholder="" class="border w-full py-4 px-4 leading-tight focus:outline-none rounded border-slate-950">
+                </div>
             </div>
             <div class="mx-2">
                 <mat-label class='px-4'>Stakeholders</mat-label>
-                <mat-chip-grid #chipGrid aria-label="Enter Email" class="border-b">
+                <mat-chip-grid #chipGrid aria-label="Enter Email" class="border-b p-4">
                     @for (email of emails(); track email) {
                     <mat-chip-row
                         (removed)="remove(email)"
